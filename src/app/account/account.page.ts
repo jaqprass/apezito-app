@@ -3,11 +3,11 @@ import { RotasService } from '../services/rotas/rotas.service';
 import { Rota } from '../interfaces/rotas.interface';
 
 @Component({
-  selector: 'app-historico',
-  templateUrl: 'historico.page.html',
-  styleUrls: ['historico.page.scss'],
+  selector: 'app-account',
+  templateUrl: 'account.page.html',
+  styleUrls: ['account.page.scss'],
 })
-export class HistoricoPage implements OnInit {
+export class AccountPage implements OnInit {
   rotas: Rota[] = [];
 
   constructor(private rotasService: RotasService) {}

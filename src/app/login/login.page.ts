@@ -32,7 +32,7 @@ export class LoginPage {
       this.auth
         .login(this.email, this.senha)
         .then(() => {
-          this.router.navigate(['/tabs/search']);
+          this.router.navigate(['/tabs/home']);
         })
         .catch((error) => {
           this.presentErrorToast();

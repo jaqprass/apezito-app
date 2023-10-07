@@ -4,17 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { PedidoPageRoutingModule } from './pedido-routing.module';
+import { WalkingroutePageRoutingModule } from './walkingroute-routing.module';
 
-import { PedidoPage } from './pedido.page';
+import { WalkingroutePage } from './walkingroute.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PedidoPageRoutingModule
+    WalkingroutePageRoutingModule
   ],
-  declarations: [PedidoPage]
+  declarations: [WalkingroutePage]
 })
-export class PedidoPageModule {}
+export class WalkingroutePageModule {}

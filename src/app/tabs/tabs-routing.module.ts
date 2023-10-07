@@ -5,13 +5,16 @@ import { authGuard } from '../services/auth/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
         path: 'home',
         loadChildren: () =>
-          import('../home/home.module').then((m) => m.HomePageModule),
+          import('../home/home.module').then(
+            (m) => m.HomePageModule
+          ),
+        canActivate: [authGuard],
       },
       {
         path: 'entregas',
@@ -44,20 +47,24 @@ const routes: Routes = [
       {
         path: 'mapa',
         loadChildren: () =>
-          import('../mapa/mapa.module').then((m) => m.MapaPageModule),
+          import('../mapa/mapa.module').then(
+            (m) => m.MapaPageModule
+          ),
+        canActivate: [authGuard],
       },
     ],
+    canActivate: [authGuard],
   },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('../login/login.module').then((m) => m.LoginPageModule),
-  },
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
-  },
+  // {
+  //   path: 'login',
+  //   loadChildren: () =>
+  //     import('../login/login.module').then((m) => m.LoginPageModule),
+  // },
+  // {
+  //   path: '',
+  //   redirectTo: '/login',
+  //   pathMatch: 'full',
+  // },
 ];
 
 @NgModule({

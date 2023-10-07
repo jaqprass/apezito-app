@@ -6,8 +6,8 @@
           "avaliacao":8,
           "paradas":[
              {
-                "endereco":"Rua tal 809, Sao Paulo - SP",
-                "descricao":"Restaurante Italiano",
+                "endereco":"Rua Desembargador Espiridião de Lima Medeiros, 389 - Três Figueiras, Porto Alegre - RS",
+                "descricao":"Ovo Gastronomia - Restaurante & Rodízio de Pizza",
                 "comentarios":[
                    "Muito bom",
                    "Bom, porém caro!!",
@@ -15,30 +15,11 @@
                 ]
              },
              {
-                "endereco":"Praça do Café, 456, Belo Horizonte - MG",
-                "descricao":"Cafeteria Aconchegante",
+                "endereco":"Sushi by Cleber                ",
+                "descricao":"Rua Desembargador Espiridião de Lima Medeiros, 317 - Três Figueiras, Porto Alegre - RS",
                 "comentarios":[
-                   "Café delicioso",
                    "Ambiente agradável",
                    "Um pouco lotado aos fins de semana"
-                ]
-             },
-             {
-                "endereco":"Rua da Praia 456, Florianópolis - SC",
-                "descricao":"Churrascaria",
-                "comentarios":[
-                   "Carnes suculentas",
-                   "Lugar perfeito para um churrasco",
-                   "Atendimento impecável."
-                ]
-             },
-             {
-                "endereco":"Avenida Central 123, Rio de Janeiro - RJ",
-                "descricao":"Pizzaria",
-                "comentarios":[
-                   "Deliciosa pizza!",
-                   "Ótimo custo-benefício",
-                   "Atendimento rápido e simpático."
                 ]
              }
           ]
@@ -49,8 +30,8 @@
           "avaliacao":9,
           "paradas":[
              {
-                "endereco":"Avenida Paulista, 123, Sao Paulo - SP",
-                "descricao":"Museu de Arte Moderna",
+                "endereco":"Av. Túlio de Rose, s/n - Jardim Europa, Porto Alegre - RS",
+                "descricao":"Parque Germânia",
                 "comentarios":[
                    "Acervo impressionante",
                    "Ótima exposição temporária",
@@ -58,21 +39,12 @@
                 ]
              },
              {
-                "endereco":"Teatro Municipal, Rua das Artes 456, Sao Paulo - SP",
-                "descricao":"Teatro Clássico",
+                "endereco":"R. Dr. Salvador França, 1427 - Jardim Botânico, Porto Alegre - RS, 90690-000",
+                "descricao":"Jardim Botânico de Porto Alegre",
                 "comentarios":[
                    "Apresentações incríveis",
                    "Arquitetura deslumbrante",
                    "Ótima acústica."
-                ]
-             },
-             {
-                "endereco":"Rua dos Museus, 789, Sao Paulo - SP",
-                "descricao":"Museu Histórico",
-                "comentarios":[
-                   "Excelente para aprender história local",
-                   "Exposições interativas",
-                   "Ótimo para famílias."
                 ]
              }
           ]

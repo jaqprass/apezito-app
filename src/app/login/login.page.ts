@@ -28,12 +28,11 @@ export class LoginPage {
   }
 
   entrar() {
-    //this.router.navigate(['/tabs/home']);
     if (this.email && this.senha) {
       this.auth
         .login(this.email, this.senha)
         .then(() => {
-          this.router.navigate(['/tabs/home']);
+          this.router.navigate(['/tabs/search']);
         })
         .catch((error) => {
           this.presentErrorToast();

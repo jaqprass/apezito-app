@@ -3,11 +3,11 @@ import { AuthService } from '../services/auth/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  selector: 'app-search',
+  templateUrl: 'search.page.html',
+  styleUrls: ['search.page.scss'],
 })
-export class HomePage {
+export class SearchPage {
   isLoggedIn: boolean = false;
   username: string = "";
 

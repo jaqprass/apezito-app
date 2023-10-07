@@ -9,10 +9,10 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: 'search',
         loadChildren: () =>
-          import('../home/home.module').then(
-            (m) => m.HomePageModule
+          import('../search/search.module').then(
+            (m) => m.SearchPageModule
           ),
         canActivate: [authGuard],
       },

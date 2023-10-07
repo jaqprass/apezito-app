@@ -5,13 +5,16 @@ import { authGuard } from '../services/auth/auth-guard.service';
 
 const routes: Routes = [
   {
-    path: 'tabs',
+    path: '',
     component: TabsPage,
     children: [
       {
-        path: 'home',
+        path: 'search',
         loadChildren: () =>
-          import('../home/home.module').then((m) => m.HomePageModule),
+          import('../search/search.module').then(
+            (m) => m.SearchPageModule
+          ),
+        canActivate: [authGuard],
       },
       {
         path: 'entregas',
@@ -27,7 +30,7 @@ const routes: Routes = [
           import('../historico/historico.module').then(
             (m) => m.HistoricoPageModule
           ),
-        canActivate: [authGuard],
+       canActivate: [authGuard],
       },
       {
         path: 'pedidos/:id',
@@ -44,19 +47,13 @@ const routes: Routes = [
       {
         path: 'mapa',
         loadChildren: () =>
-          import('../mapa/mapa.module').then((m) => m.MapaPageModule),
+          import('../mapa/mapa.module').then(
+            (m) => m.MapaPageModule
+          ),
+        canActivate: [authGuard],
       },
     ],
-  },
-  {
-    path: 'login',
-    loadChildren: () =>
-      import('../login/login.module').then((m) => m.LoginPageModule),
-  },
-  {
-    path: '',
-    redirectTo: '/login',
-    pathMatch: 'full',
+    canActivate: [authGuard],
   },
 ];
 

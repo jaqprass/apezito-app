@@ -9,12 +9,18 @@ import { Router } from '@angular/router';
 })
 export class HomePage {
   isLoggedIn: boolean = false;
+  username: string = "";
 
   constructor(private auth: AuthService, private router: Router) {
     this.isLoggedIn = this.auth.isLoggedIn;
   }
 
   ionViewWillEnter() {
+    const user = localStorage.getItem('user');
+    this.username = user
+      ? JSON.parse(user).email.split('@')[0]
+      : null;
+
     this.isLoggedIn = this.auth.isLoggedIn;
   }
 

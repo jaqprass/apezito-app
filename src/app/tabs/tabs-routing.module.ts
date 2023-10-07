@@ -30,7 +30,7 @@ const routes: Routes = [
           import('../historico/historico.module').then(
             (m) => m.HistoricoPageModule
           ),
-        canActivate: [authGuard],
+       canActivate: [authGuard],
       },
       {
         path: 'pedidos/:id',
@@ -55,16 +55,6 @@ const routes: Routes = [
     ],
     canActivate: [authGuard],
   },
-  // {
-  //   path: 'login',
-  //   loadChildren: () =>
-  //     import('../login/login.module').then((m) => m.LoginPageModule),
-  // },
-  // {
-  //   path: '',
-  //   redirectTo: '/login',
-  //   pathMatch: 'full',
-  // },
 ];
 
 @NgModule({

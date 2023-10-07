@@ -1,6 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { RotasService } from '../services/rotas/rotas.service';
-import { Rota } from '../interfaces/rotas.interface';
 
 @Component({
   selector: 'app-account',
@@ -8,22 +6,9 @@ import { Rota } from '../interfaces/rotas.interface';
   styleUrls: ['account.page.scss'],
 })
 export class AccountPage implements OnInit {
-  rotas: Rota[] = [];
 
-  constructor(private rotasService: RotasService) {}
+  constructor() {}
 
   ngOnInit() {
-    this.carregarRotas();
-  }
-
-  carregarRotas() {
-    this.rotasService.getRotasEntregues().subscribe({
-      next: (data) => {
-        data ? (this.rotas = data.rotas) : (this.rotas = []);
-      },
-      error: (error) => {
-        console.error('Erro ao buscar as rotas entregues:', error);
-      },
-    });
   }
 }

@@ -1,0 +1,16 @@
+<ion-header> </ion-header>
+<ion-content [fullscreen]="true">
+  <ion-grid style="height: 100%">
+    <ion-row style="height: 100%">
+      <ion-col size="12">
+        <div #gmap id="gmap" style="height: 100%"></div>
+        <ion-button
+          class="google-maps-button"
+          (click)="openGoogleMapsNavigation()"
+        >
+          Iniciar
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

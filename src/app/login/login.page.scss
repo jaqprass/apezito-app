@@ -1,0 +1,28 @@
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.login-logo {
+  max-width: 300px; /* Set your desired maximum width here */
+  width: 100%; /* Ensure the image scales proportionally within the max-width */
+}
+
+ion-input,
+ion-button {
+  width: 100%;
+  max-width: 300px;
+  margin: 10px 0;
+}
+
+.fechar-botao {
+  margin-left: auto; /* Move o botão para a direita */
+}
+
+.erro {
+  color: red;
+  margin-top: 10px;
+}

@@ -9,6 +9,14 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
+        path: 'home',
+        loadChildren: () => 
+          import('../home/home.module').then( 
+            (m) => m.HomePageModule
+          ),
+        canActivate: [authGuard],
+      },
+      {
         path: 'search',
         loadChildren: () =>
           import('../search/search.module').then(
@@ -17,10 +25,10 @@ const routes: Routes = [
         canActivate: [authGuard],
       },
       {
-        path: 'entregas',
-        loadChildren: () =>
-          import('../entregas/entregas.module').then(
-            (m) => m.EntregasPageModule
+        path: 'walkingroute',
+        loadChildren: () => 
+          import('../walkingroute/walkingroute.module').then( 
+            (m) => m.WalkingroutePageModule
           ),
         canActivate: [authGuard],
       },
@@ -32,18 +40,6 @@ const routes: Routes = [
           ),
        canActivate: [authGuard],
       },
-      // {
-      //   path: 'pedidos/:id',
-      //   loadChildren: () =>
-      //     import('../pedidos/pedidos.module').then((m) => m.PedidosPageModule),
-      //   canActivate: [authGuard],
-      // },
-      // {
-      //   path: 'pedido/:id',
-      //   loadChildren: () =>
-      //     import('../pedido/pedido.module').then((m) => m.PedidoPageModule),
-      //   canActivate: [authGuard],
-      // },
       {
         path: 'mapa',
         loadChildren: () =>

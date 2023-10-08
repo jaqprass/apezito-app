@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "377555696864",
+    "project_id": "apezito-app",
+    "storage_bucket": "apezito-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:377555696864:android:c1e643ceb4f3aa98536485",
+        "android_client_info": {
+          "package_name": "io.ionic.starter"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIierNmi-hmHNSp00Ea8nY3eRFnweoTu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

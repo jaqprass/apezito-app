@@ -32,4 +32,8 @@ export class HomePage  {
       this.router.navigate(['login']);
     }
   }
+
+  onEnter(event: Event) {
+    this.router.navigate(['/tabs/search']);
+  }
 }

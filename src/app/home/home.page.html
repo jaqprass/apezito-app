@@ -1,7 +1,32 @@
 <ion-content>
   <div class="welcome-container">
     <h1>Bem-vindo, <span id="user-name">{{username}}</span>!</h1>
+    <ion-input placeholder="O que gostaria de conhecer hoje?" (keyup.enter)="onEnter($event)"></ion-input>
   </div>
+
+  <ion-grid>
+    <ion-row>
+      <figure>
+        <img src="https://meulugar.quintoandar.com.br/wp-content/uploads/2023/02/parques-em-goiania-7-1-850x680.jpg">
+        <figcaption>Parque do Lago <br> Rua ABC, Porto Alegre - RS <br> 2 kms de distância</figcaption>
+      </figure>
+    </ion-row>
+
+    <ion-row>
+      <figure>
+        <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/bd/d0/96/parque-germania.jpg?w=800&h=-1&s=1">
+        <figcaption>Parque Germânia <br> Av. Túlio de Rose, Porto Alegre - RS <br> 3 kms de distância</figcaption>
+      </figure>
+    </ion-row>
+
+    <ion-row>
+      <figure>
+        <img src="https://mid.curitiba.pr.gov.br/2022/capa/00336166.jpg">
+        <figcaption>Parque das árvores <br> Av. Orlando, Porto Alegre - RS <br> 4 kms de distância</figcaption>
+      </figure>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>
 
 <ion-footer>

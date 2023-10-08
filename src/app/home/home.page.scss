@@ -33,3 +33,11 @@
     align-items: center;
     height: 100%; /* Optional, use if you want to center vertically as well */
   }
+
+  ion-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }

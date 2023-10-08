@@ -1,6 +1,12 @@
 import { Component } from '@angular/core';
 import { Capacitor } from '@capacitor/core';
-import { PushNotifications } from '@capacitor/push-notifications';
+// import { PushNotifications } from '@capacitor/push-notifications';
+import {
+  ActionPerformed,
+  PushNotificationSchema,
+  PushNotifications,
+  Token,
+} from '@capacitor/push-notifications';
 
 @Component({
   selector: 'app-root',
@@ -9,52 +15,56 @@ import { PushNotifications } from '@capacitor/push-notifications';
 })
 export class AppComponent {
   constructor() {
-    if (Capacitor.getPlatform() !== 'web') {
-      this.configurePushNotifications();
-    }
+    // if (Capacitor.getPlatform() !== 'web') {
+    //   this.configurePushNotifications();
+    // }
   }
 
-  async configurePushNotifications() {
-    await PushNotifications.addListener('registration', (token) => {
-      console.info('Registration token: ', token.value);
+  ngOnInit() {
+    console.log('Initializing HomePage');
+
+    // Request permission to use push notifications
+    // iOS will prompt user and return if they granted permission or not
+    // Android will just grant without prompting
+    PushNotifications.requestPermissions().then(result => {
+      if (result.receive === 'granted') {
+        // Register with Apple / Google to receive push via APNS/FCM
+        PushNotifications.register();
+      } else {
+        // Show some error
+      }
     });
 
-    await PushNotifications.addListener('registrationError', (err) => {
-      console.error('Registration error: ', err.error);
-    });
-
-    await PushNotifications.addListener(
-      'pushNotificationReceived',
-      (notification) => {
-        console.log('Push notification received: ', notification);
+    // On success, we should be able to receive notifications
+    PushNotifications.addListener('registration',
+      (token: Token) => {
+        //alert('Push registration success, token: ' + token.value);
+        console.log('token ' + token.value);
       }
     );
 
-    await PushNotifications.addListener(
-      'pushNotificationActionPerformed',
-      (notification) => {
-        console.log(
-          'Push notification action performed',
-          notification.actionId,
-          notification.inputValue
-        );
+    // Some issue with our setup and push will not work
+    PushNotifications.addListener('registrationError',
+      (error: any) => {
+        //alert('Error on registration: ' + JSON.stringify(error));
+        console.log('Error on registration: ' + JSON.stringify(error));
       }
     );
 
-    let permStatus = await PushNotifications.checkPermissions();
+    // Show us the notification payload if the app is open on our device
+    PushNotifications.addListener('pushNotificationReceived',
+      (notification: PushNotificationSchema) => {
+        //alert('Push received: ' + JSON.stringify(notification));
+        console.log('Push received: ' + JSON.stringify(notification));
+      }
+    );
 
-    if (permStatus.receive === 'prompt') {
-      permStatus = await PushNotifications.requestPermissions();
-    }
-
-    if (permStatus.receive !== 'granted') {
-      throw new Error('User denied permissions!');
-    }
-
-    await PushNotifications.register();
-
-    const notificationList =
-      await PushNotifications.getDeliveredNotifications();
-    console.log('delivered notifications', notificationList);
+    // Method called when tapping on a notification
+    PushNotifications.addListener('pushNotificationActionPerformed',
+      (notification: ActionPerformed) => {
+        //alert('Push action performed: ' + JSON.stringify(notification));
+        console.log('Push action performed: ' + JSON.stringify(notification));
+      }
+    );
   }
 }

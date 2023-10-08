@@ -1,43 +1,48 @@
 #container {
-    text-align: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  
-  .welcome-container {
-    //background-color: #ffffff;
-    //border-radius: 10px;
-    //box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
-    //padding: 20px;
-    text-align: center;
-    max-width: 300px;
-    margin: 100px auto;
-  }
-  
-  h1 {
-    font-size: 24px;
-    //margin-bottom: 20px;
-  }
-  
-  #user-name {
-    //color: var(--ion-color-custom);
-    font-weight: bold;
-  }
-  
-  .center-horizontal {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%; /* Optional, use if you want to center vertically as well */
-  }
+  text-align: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-  ion-grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-  }
+.welcome-container {
+  //background-color: #ffffff;
+  //border-radius: 10px;
+  //box-shadow: 0 0 0px rgba(0, 0, 0, 0.2);
+  //padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  margin: 10px auto;
+}
+
+h1 {
+  font-size: 24px;
+  //margin-bottom: 20px;
+}
+
+#user-name {
+  //color: var(--ion-color-custom);
+  font-weight: bold;
+}
+
+.center-horizontal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  /* Optional, use if you want to center vertically as well */
+}
+
+ion-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+}
+
+img {
+  border-radius: 5%;
+}

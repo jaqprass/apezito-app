@@ -1,16 +1,51 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>walkingroute</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content>
+  <div class="welcome-container">
+    <h1>Percurso dos parques</h1>
+    <h1>8 kms de distância</h1>
+    <h1>4 paradas</h1>
+  </div>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">walkingroute</ion-title>
-      <ion-button style="text-align: center" (click)="exibeMapa()"
-        >Iniciar percurso</ion-button
-      >
-    </ion-toolbar>
-  </ion-header>
+  <div class="btn-init-percurso">
+    <ion-button (click)="exibeMapa()">iniciar percurso</ion-button>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <figure>
+        <img src="https://meulugar.quintoandar.com.br/wp-content/uploads/2023/02/parques-em-goiania-7-1-850x680.jpg">
+        <figcaption>Parada 1</figcaption>
+        <figcaption>Parque do Lago</figcaption>
+        <figcaption>Rua ABC, Porto Alegre - RS</figcaption>
+      </figure>
+    </ion-row>
+
+    <ion-row>
+      <figure>
+        <img
+          src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/04/bd/d0/96/parque-germania.jpg?w=800&h=-1&s=1">
+        <figcaption>Parada 2</figcaption>
+        <figcaption>Parque Germânia</figcaption>
+        <figcaption>Av. Túlio de Rose, Porto Alegre - RS</figcaption>
+      </figure>
+    </ion-row>
+
+    <ion-row>
+      <figure>
+        <img src="https://mid.curitiba.pr.gov.br/2022/capa/00336166.jpg">
+        <figcaption>Parada 3</figcaption>
+        <figcaption>Parque das árvores</figcaption>
+        <figcaption>Av. Orlando, Porto Alegre - RS</figcaption>
+      </figure>
+    </ion-row>
+
+    <ion-row>
+      <figure>
+        <img src="https://mid.curitiba.pr.gov.br/2022/capa/00336166.jpg">
+        <figcaption>Parada 4</figcaption>
+        <figcaption>Parque das árvores</figcaption>
+        <figcaption>Av. Orlando, Porto Alegre - RS</figcaption>
+      </figure>
+    </ion-row>
+  </ion-grid>
+
 </ion-content>

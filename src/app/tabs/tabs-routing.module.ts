@@ -10,24 +10,20 @@ const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadChildren: () => 
-          import('../home/home.module').then( 
-            (m) => m.HomePageModule
-          ),
+        loadChildren: () =>
+          import('../home/home.module').then((m) => m.HomePageModule),
         canActivate: [authGuard],
       },
       {
         path: 'search',
         loadChildren: () =>
-          import('../search/search.module').then(
-            (m) => m.SearchPageModule
-          ),
+          import('../search/search.module').then((m) => m.SearchPageModule),
         canActivate: [authGuard],
       },
       {
         path: 'walkingroute',
-        loadChildren: () => 
-          import('../walkingroute/walkingroute.module').then( 
+        loadChildren: () =>
+          import('../walkingroute/walkingroute.module').then(
             (m) => m.WalkingroutePageModule
           ),
         canActivate: [authGuard],
@@ -35,18 +31,14 @@ const routes: Routes = [
       {
         path: 'account',
         loadChildren: () =>
-          import('../account/account.module').then(
-            (m) => m.AccountPageModule
-          ),
-       canActivate: [authGuard],
+          import('../account/account.module').then((m) => m.AccountPageModule),
+        canActivate: [authGuard],
       },
       {
         path: 'mapa',
         loadChildren: () =>
-          import('../mapa/mapa.module').then(
-            (m) => m.MapaPageModule
-          ),
-        canActivate: [authGuard],
+          import('../mapa/mapa.module').then((m) => m.MapaPageModule),
+        //canActivate: [authGuard],
       },
     ],
     canActivate: [authGuard],

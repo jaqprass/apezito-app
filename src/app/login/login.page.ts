@@ -11,7 +11,6 @@ import { ToastController } from '@ionic/angular';
 export class LoginPage {
   email!: string;
   senha!: string;
-  erro: string | null = null;
 
   constructor(
     private auth: AuthService,
@@ -35,20 +34,17 @@ export class LoginPage {
           this.router.navigate(['/tabs/home']);
         })
         .catch((error) => {
-          this.presentErrorToast();
+          this.presentErrorToast('Erro no login');
           this.senha = '';
         });
     } else {
-      this.erro = 'Por favor, informe o email e/ou a senha.';
-      setTimeout(() => {
-        this.erro = null;
-      }, 4000);
+      this.presentErrorToast('Por favor, informe o email e/ou a senha.');
     }
   }
 
-  async presentErrorToast() {
+  async presentErrorToast(message: string) {
     const toast = await this.toastController.create({
-      message: 'Erro no login',
+      message: message,
       duration: 2000,
       position: 'bottom',
       color: 'danger',

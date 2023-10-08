@@ -1,10 +1,10 @@
-# pedramoura-app
+# apezito-app
 
 ## Setup
 
 ```sh
-git clone https://https://github.com/jaqprass/pedramoura-app
-cd pedramoura-app
+git clone https://https://github.com/jaqprass/apezito-app
+cd apezito-app
 npm install
 ionic build
 ```
@@ -13,7 +13,7 @@ ionic build
 
 ### Web
 
-* Compile and run
+- Compile and run
 
 ```sh
 ionic serve
@@ -21,17 +21,22 @@ ionic serve
 
 ### Android
 
-* Compile
-  * Update code to native device
+- Compile
+
+  - Update code to native device
+
   ```sh
   ionic cap copy
   ```
-  * Update plugins to native device
+
+  - Update plugins to native device
+
   ```sh
   ionic cap sync
   ```
 
-* Run
+- Run
+
 ```sh
 ionic cap open android
 ```

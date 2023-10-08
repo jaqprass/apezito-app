@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { RotasService } from '../services/rotas/rotas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-walkingroute',
@@ -6,10 +8,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./walkingroute.page.scss'],
 })
 export class WalkingroutePage implements OnInit {
+  constructor(private rotasService: RotasService, private router: Router) {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
+  exibeMapa() {
+    const enderecos = this.rotasService.getPercurso();
+    this.router.navigate(['tabs/mapa'], { state: { enderecos: enderecos } });
   }
-
 }

@@ -2,7 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Loader } from '@googlemaps/js-api-loader';
 import { ToastController } from '@ionic/angular';
-import { Pedido } from '../interfaces/pedidos.interface';
+import { Geolocation, Position } from '@capacitor/geolocation';
 
 @Component({
   selector: 'app-mapa',
@@ -15,6 +15,8 @@ export class MapaPage implements OnInit {
   loader!: Loader;
   enderecos: string[] = [];
   waypoints: google.maps.DirectionsWaypoint[] = [];
+  coordinates!: Position;
+  destination: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -26,18 +28,27 @@ export class MapaPage implements OnInit {
       const state = history.state;
       if (state) {
         this.enderecos = state.enderecos;
-        this.enderecos.forEach((endereco) => {
-          this.waypoints.push({
-            location: endereco,
-            stopover: true,
-          });
+        this.enderecos.forEach((endereco, index) => {
+          if (index < this.enderecos.length - 1) {
+            this.waypoints.push({
+              location: endereco,
+              stopover: true,
+            });
+          } else {
+            this.destination = endereco;
+          }
         });
       }
     });
   }
 
   ngAfterViewInit(): void {
-    this.initMap();
+    const currentPosition = async () => {
+      this.coordinates = await Geolocation.getCurrentPosition();
+      this.initMap();
+    };
+
+    currentPosition();
   }
 
   initMap() {
@@ -47,8 +58,8 @@ export class MapaPage implements OnInit {
     });
     const mapOptions = {
       center: {
-        lat: -29.656228,
-        lng: -50.5735855,
+        lat: this.coordinates.coords.latitude,
+        lng: this.coordinates.coords.longitude,
       },
       zoom: 8,
     };
@@ -63,16 +74,48 @@ export class MapaPage implements OnInit {
 
         directionsRenderer.setMap(map);
 
+        directionsRenderer.setPanel(
+          document.getElementById('directions-panel')
+        );
+
         directionsService.route(
           {
-            origin: 'Rolante, RS, 95690-000, Brasil', //Saindo da empresa PedraMoura
-            destination: 'Rolante, RS, 95690-000, Brasil', //Retornando a empresa PedraMoura
-            travelMode: google.maps.TravelMode.DRIVING,
+            origin: {
+              lat: this.coordinates.coords.latitude,
+              lng: this.coordinates.coords.longitude,
+            },
+            destination: this.destination,
+            travelMode: google.maps.TravelMode.WALKING,
             waypoints: this.waypoints,
           },
           function (result, status) {
             if (status == 'OK') {
               directionsRenderer.setDirections(result);
+
+              const route = result!.routes[0];
+              let totalDistance = 0;
+              let totalDuration = 0;
+              route.legs.forEach((leg) => {
+                totalDistance += leg.distance!.value;
+                totalDuration += leg.duration!.value;
+              });
+
+              const distance = (totalDistance / 1000).toFixed(2);
+              let duration: string;
+              if (totalDuration >= 3600) {
+                // Se for mais de uma hora
+                const hours = Math.floor(totalDuration / 3600); // Horas
+                const minutes = Math.floor((totalDuration % 3600) / 60); // Minutos
+                duration = `${hours} h ${minutes} min`;
+              } else {
+                // Menos de uma hora
+                const minutes = (totalDuration / 60).toFixed(0); // Minutos
+                duration = `${minutes} min`;
+              }
+
+              document.getElementById('distance')!.textContent =
+                distance + ' km(s)';
+              document.getElementById('duration')!.textContent = duration;
             }
           }
         );
@@ -84,22 +127,11 @@ export class MapaPage implements OnInit {
 
   async presentErrorToast() {
     const toast = await this.toastController.create({
-      message: 'Erro ao carregar a rota',
+      message: 'Erro ao carregar sua rota',
       duration: 3000,
       position: 'middle',
       color: 'danger',
     });
     toast.present();
-  }
-
-  openGoogleMapsNavigation() {
-    const destination = 'Rolante, RS, 95690-000, Brasil';
-    const waypoints = this.enderecos;
-
-    const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=Minha+Localizacao&destination=${destination}&travelmode=driving&waypoints=${waypoints.join(
-      '|'
-    )}`;
-
-    window.open(mapsUrl, '_blank');
   }
 }

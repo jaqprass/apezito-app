@@ -4,12 +4,20 @@
     <ion-row style="height: 100%">
       <ion-col size="12">
         <div #gmap id="gmap" style="height: 100%"></div>
-        <ion-button
-          class="google-maps-button"
-          (click)="openGoogleMapsNavigation()"
+        <div
+          style="
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background-color: white;
+            padding: 10px;
+          "
         >
-          Iniciar
-        </ion-button>
+          <p>
+            Distância: <span id="distance" style="font-weight: bold"></span>
+          </p>
+          <p>Duração: <span id="duration" style="font-weight: bold"></span></p>
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>

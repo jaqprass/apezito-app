@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
+import { Capacitor } from '@capacitor/core';
 import { PushNotifications } from '@capacitor/push-notifications';
-import { Platform } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +8,10 @@ import { Platform } from '@ionic/angular';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor(private platform: Platform) {
-    this.platform
-      .ready()
-      .then(() => {
-        this.configurePushNotifications();
-      })
-      .catch((e) => {
-        console.log('error: ', e);
-      });
+  constructor() {
+    if (Capacitor.getPlatform() !== 'web') {
+      this.configurePushNotifications();
+    }
   }
 
   async configurePushNotifications() {
